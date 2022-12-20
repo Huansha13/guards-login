@@ -1,0 +1,24 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">Hola Mundo</a>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" routerLink="/login" *ngIf="!settings.getPermiso(); else btnSalir;">Login</button>
+            <ng-template #btnSalir>
+                <button class="btn btn-outline-danger" type="submit" routerLink="/nav" (click)="settings.setPermiso(false)">Salir</button>
+            </ng-template>
+        </form>
+    </div>
+</nav>
+<div class="d-flex justify-content-center mt-5" *ngIf="!settings.getPermiso()">
+    <img src="https://techprd.com/wp-content/uploads/2017/11/Angular-1024x985.png" width="500px">
+</div>
+
+<div class="container mt-1" *ngIf="!settings.getStausAccesoMenu()">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Acceso Denegado!</h4>
+        <p>Considerar lo siguiente para ingresar al menu principal</p>
+        <hr>
+        <p class="mb-0">User: admin y Password: 123</p>
+    </div>
+</div>
